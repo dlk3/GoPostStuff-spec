@@ -13,9 +13,6 @@ if [ $(cat /etc/hostname) == "fang.localdomain" ]; then
 else
 
 	#  Make the container look like a COPR environment
-	dnf install -y --nogpgcheck https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-	dnf install -y dnf-plugins-core
-	dnf config-manager --enable PowerTools
 	dnf groupinstall -y "Development Tools" "RPM Development Tools"
 	dnf install -y rpm-build
 	dnf upgrade -y
