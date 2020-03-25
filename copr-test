@@ -26,7 +26,7 @@ else
 	cd /tmp/copr-test
 
 	#  COPR: Installing packages required by the custom script
-	dnf install -y gcc-go
+	dnf install -y git gcc-go
 	
 	#  COPR: The custom script that gets/creates the sources and the spec file
 	git clone https://github.com/dlk3/GoPostStuff-spec.git
