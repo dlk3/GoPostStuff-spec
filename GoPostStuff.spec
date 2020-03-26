@@ -6,7 +6,7 @@
 
 Name:		GoPostStuff
 Version:	0.3.0
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	UseNet binary poster
 
 License:	MIT
@@ -15,7 +15,12 @@ Source0:	%{name}-%{version}.tar.gz
 Patch0:		gcfg-repo.patch
 BuildArch:	x86_64
 
+%if 0%{?fedora}
 BuildRequires:	gcc-go
+%endif
+%if 0%{?rhel}
+BuildRequires:	golang
+%endif
 
 
 %description
@@ -49,6 +54,8 @@ install -m 755 -t %{buildroot}%{_bindir} go/bin/gopoststuff
 
 
 %changelog
+* Thu Mar 26 2020 David King <dave@daveking.com> - 0.3.0-3
+	Enable building for CentOS
 * Thu Mar 26 2020 David King <dave@daveking.com> - 0.3.0-2
 	Add build for "gopoststuff" binary in addition to "GoPostStuff"
 * Wed Mar 25 2020 David King <dave@daveking.com> - 0.3.0-1
