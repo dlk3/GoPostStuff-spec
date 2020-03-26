@@ -9,3 +9,14 @@
  	"flag"
  	"fmt"
  	"github.com/op/go-logging"
+--- go/src/github.com/madcowfred/gopoststuff/gopoststuff.go.orig	2020-03-25 14:10:10.565063050 -0400
++++ go/src/github.com/madcowfred/gopoststuff/gopoststuff.go	2020-03-25 14:10:59.813316653 -0400
+@@ -1,7 +1,7 @@
+ package main
+ 
+ import (
+-	"code.google.com/p/gcfg"
++	"gopkg.in/gcfg.v1"
+ 	"flag"
+ 	"fmt"
+ 	"github.com/op/go-logging"

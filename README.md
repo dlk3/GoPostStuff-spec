@@ -8,7 +8,7 @@ GoPostStuff is a simple utility for posting files to UseNet binary news
 groups.  See https://github.com/madcowfred/GoPostStuff for details. 
 
 I have created a Fedora COPR repository to support the installation of
-the RPMs I created.  To install GoPostSTuff from this repository do:
+the RPMs I created.  To install GoPostStuff from this repository do:
 ```
 $ sudo dnf copr enable dlk/rpms
 $ sudo dnf install GoPostStuff
