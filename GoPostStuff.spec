@@ -49,7 +49,7 @@ install -m 755 -t %{buildroot}%{_bindir} go/bin/gopoststuff
 
 
 %changelog
-* Wed Mar 25 2020 David King <dave@daveking.com> - 0.3.0-1
-	Initial Version
 * Thu Mar 26 2020 David King <dave@daveking.com> - 0.3.0-2
 	Add build for "gopoststuff" binary in addition to "GoPostStuff"
+* Wed Mar 25 2020 David King <dave@daveking.com> - 0.3.0-1
+	Initial Version
