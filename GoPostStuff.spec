@@ -24,7 +24,7 @@
 
 Name:		GoPostStuff
 Version:	0.3.0
-Release:	3%{?dist}
+Release:	5%{?dist}
 Summary:	UseNet binary poster
 
 License:	MIT
@@ -75,13 +75,18 @@ install -m 755 -t %{buildroot}%{_bindir} go/bin/gopoststuff
 
 
 %post
-echo -e "\n  ******************************************************************************"
-echo "  *  Before running GoPostStuff for the first time you must copy the           *"
-echo -e "  *  /usr/share/doc/GoPostStuff/sample.conf file to \${HOME}/.gopoststuff.conf  *"
-echo "  *  and modify it to suit your requirements.                                  *"
-echo "  ******************************************************************************"
+if [ $1 == 1 ]; then
+	echo -e "\n  ******************************************************************************"
+	echo "  *  Before running GoPostStuff for the first time you must copy the           *"
+	echo -e "  *  /usr/share/doc/GoPostStuff/sample.conf file to \${HOME}/.gopoststuff.conf  *"
+	echo "  *  and modify it to suit your requirements.                                  *"
+	echo "  ******************************************************************************"
+fi
+exit 0
 
 %changelog
+* Fri Mar 27 2020 David King <dave@daveking.com> - 0.3.0-5
+	Modify post scriptlet so it only displays message on install, not upgrade
 * Fri Mar 27 2020 David King <dave@daveking.com> - 0.3.0-4
 	Add sample.conf file to package
 * Thu Mar 26 2020 David King <dave@daveking.com> - 0.3.0-3
