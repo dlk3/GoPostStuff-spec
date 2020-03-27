@@ -1,6 +1,24 @@
-#  This Source Code Form is subject to the terms of the Mozilla Public
-#  License, v. 2.0. If a copy of the MPL was not distributed with this
-#  file, You can obtain one at https://mozilla.org/MPL/2.0/.
+# The MIT License (MIT)
+#
+# Copyright (c) 2020  David King (dave@daveking.com)
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
 
 %define  debug_package %{nil}
 
@@ -24,7 +42,8 @@ BuildRequires:	golang
 
 
 %description
-GoPostStuff is a simple client for posting binaries to Usenet.
+GoPostStuff is a simple command-line utility for posting binary files to UseNet
+newsgroups.
 
 
 %prep
@@ -38,6 +57,7 @@ go install github.com/madcowfred/GoPostStuff
 go install github.com/madcowfred/gopoststuff
 cp ${GOPATH}/src/github.com/madcowfred/GoPostStuff/LICENSE .
 cp ${GOPATH}/src/github.com/madcowfred/GoPostStuff/README.md .
+cp ${GOPATH}/src/github.com/madcowfred/GoPostStuff/sample.conf .
 
 
 %install
@@ -48,12 +68,22 @@ install -m 755 -t %{buildroot}%{_bindir} go/bin/gopoststuff
 
 %files
 %doc README.md
+%doc sample.conf
 %license LICENSE
 %{_bindir}/GoPostStuff
 %{_bindir}/gopoststuff
 
 
+%post
+echo -e "\n  ******************************************************************************"
+echo "  *  Before running GoPostStuff for the first time you must copy the           *"
+echo -e "  *  /usr/share/doc/GoPostStuff/sample.conf file to \${HOME}/.gopoststuff.conf  *"
+echo "  *  and modify it to suit your requirements.                                  *"
+echo "  ******************************************************************************"
+
 %changelog
+* Fri Mar 27 2020 David King <dave@daveking.com> - 0.3.0-4
+	Add sample.conf file to package
 * Thu Mar 26 2020 David King <dave@daveking.com> - 0.3.0-3
 	Enable building for CentOS
 * Thu Mar 26 2020 David King <dave@daveking.com> - 0.3.0-2
